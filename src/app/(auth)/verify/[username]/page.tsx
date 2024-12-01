@@ -1,13 +1,14 @@
 'use client';
-
-import { Button } from '@/components/ui/button';
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import Image from 'next/image';
+import { WavyBackground } from '@/components/ui/wavy-background';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { ApiResponse } from '@/types/ApiResponse';
@@ -52,13 +53,14 @@ export default function VerifyAccount() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="flex justify-center items-center min-h-screen">
+      <WavyBackground className="max-w-4xl mx-auto pb-40" />
+      <div className="w-full max-w-md p-8 z-40 space-y-8 bg-black border border-black rounded-lg shadow-md">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
+          <h1 className="text-4xl text-white font-extrabold tracking-tight lg:text-5xl mb-6">
             Verify Your Account
           </h1>
-          <p className="mb-4">Enter the verification code sent to your email</p>
+          <p className="mb-4 text-white">Enter the verification code sent to your email</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -67,13 +69,15 @@ export default function VerifyAccount() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Verification Code</FormLabel>
-                  <Input {...field} />
+                  <FormLabel className='text-white'>Verification Code</FormLabel>
+                  <FormControl>
+                    <Input placeholder='Enter the code' {...field} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Verify</Button>
+            <button className='text-white bg-blue-400 px-2 py-1 rounded-md border-white border text-center' type="submit">Submit</button>
           </form>
         </Form>
       </div>

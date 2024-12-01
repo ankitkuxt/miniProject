@@ -5,7 +5,7 @@ import axios, { AxiosError } from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Loader2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
 import { Separator } from '@/components/ui/separator';
 import { CardHeader, CardContent, Card } from '@/components/ui/card';
 import { useCompletion } from 'ai/react';
@@ -121,14 +121,14 @@ export default function SendMessage() {
           />
           <div className="flex justify-center">
             {isLoading ? (
-              <Button disabled>
+              <button disabled>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Please wait
-              </Button>
+              </button>
             ) : (
-              <Button type="submit" disabled={isLoading || !messageContent}>
+              <button type="submit" disabled={isLoading || !messageContent}>
                 Send It
-              </Button>
+              </button>
             )}
           </div>
         </form>
@@ -136,13 +136,13 @@ export default function SendMessage() {
 
       <div className="space-y-4 my-8">
         <div className="space-y-2">
-          <Button
+          <button
             onClick={fetchSuggestedMessages}
             className="my-4"
             disabled={isSuggestLoading}
           >
             Suggest Messages
-          </Button>
+          </button>
           <p>Click on any message below to select it.</p>
         </div>
         <Card>
@@ -154,14 +154,13 @@ export default function SendMessage() {
               <p className="text-red-500">{error.message}</p>
             ) : (
               parseStringMessages(completion).map((message, index) => (
-                <Button
+                <button
                   key={index}
-                  variant="outline"
                   className="mb-2"
                   onClick={() => handleMessageClick(message)}
                 >
                   {message}
-                </Button>
+                </button>
               ))
             )}
           </CardContent>
@@ -171,7 +170,7 @@ export default function SendMessage() {
       <div className="text-center">
         <div className="mb-4">Get Your Message Board</div>
         <Link href={'/sign-up'}>
-          <Button>Create Your Account</Button>
+          <button>Create Your Account</button>
         </Link>
       </div>
     </div>

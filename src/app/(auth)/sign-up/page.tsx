@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDebounce } from 'usehooks-ts';
 import * as z from 'zod';
-
-import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { WavyBackground } from '@/components/ui/wavy-background';
 import {
   Form,
   FormField,
@@ -98,13 +98,18 @@ export default function SignUpForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Join True Feedback
-          </h1>
-          <p className="mb-4">Sign up to start your anonymous adventure</p>
+    <div className="flex justify-center items-center min-h-screen">
+      <WavyBackground className="max-w-4xl mx-auto pb-40" />
+      <div className="w-full max-w-md z-40 p-8 space-y-8 bg-black border border-white rounded-lg shadow-md">
+        <div className="text-white text-center">
+        Welcome to
+          <Image 
+            className="ml-8 mb-6"
+            src='/music.png'
+            alt='logo image'
+            width={320}
+            height={350}
+          />
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -113,7 +118,7 @@ export default function SignUpForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel className='text-white'>Username</FormLabel>
                   <Input
                     {...field}
                     onChange={(e) => {
@@ -142,7 +147,7 @@ export default function SignUpForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className='text-white'>Email</FormLabel>
                   <Input {...field} name="email" />
                   <p className='text-muted text-gray-400 text-sm'>We will send you a verification code</p>
                   <FormMessage />
@@ -155,13 +160,13 @@ export default function SignUpForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className='text-white'>Password</FormLabel>
                   <Input type="password" {...field} name="password" />
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className='w-full' disabled={isSubmitting}>
+            <button type="submit" className='text-white font-sans w-full' disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -170,10 +175,10 @@ export default function SignUpForm() {
               ) : (
                 'Sign Up'
               )}
-            </Button>
+            </button>
           </form>
         </Form>
-        <div className="text-center mt-4">
+        <div className="text-center text-white mt-4">
           <p>
             Already a member?{' '}
             <Link href="/sign-in" className="text-blue-600 hover:text-blue-800">

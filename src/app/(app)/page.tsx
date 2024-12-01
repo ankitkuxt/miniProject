@@ -1,66 +1,36 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Mail } from 'lucide-react'; // Assuming you have an icon for messages
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Autoplay from 'embla-carousel-autoplay';
-import messages from '@/messages.json';
+import React from "react";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
+import { WavyBackground } from '@/components/ui/wavy-background';
 
 export default function Home() {
   return (
     <>
       {/* Main content */}
-      <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-gray-800 text-white">
-        <section className="text-center mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold">
-            Dive into the World of Anonymous Feedback
-          </h1>
-          <p className="mt-3 md:mt-4 text-base md:text-lg">
-            True Feedback - Where your identity remains a secret.
-          </p>
-        </section>
+      <WavyBackground className="fixed max-w-4xl mx-auto pb-40">
+      <div className="max-w-7xl mt-9 relative mx-auto px-4 w-full left-0 top-0">
+        <h1 className={'py-3 font-serif text-2xl md:text-6xl font-bold text-white'}>
+        "Stream Independently,<br /> Discover Limitlessly."
+        </h1>
+        <p className={`font-serif max-w-2xl text-base md:text-3xl mt-8 text-neutral-200`}>
+          The ultimate one stop music streaming platform where souls connect through the world of MUSIC.
+        </p>
+      </div>
 
-        {/* Carousel for Messages */}
-        <Carousel
-          plugins={[Autoplay({ delay: 2000 })]}
-          className="w-full max-w-lg md:max-w-xl"
-        >
-          <CarouselContent>
-            {messages.map((message, index) => (
-              <CarouselItem key={index} className="p-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{message.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4">
-                    <Mail className="flex-shrink-0" />
-                    <div>
-                      <p>{message.content}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {message.received}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </main>
+      {/* <div className="py-20 text-white mx-auto px-2">
+        <h3 className={`font-serif py-5 font-semibold text-[40px]`}> How does it work? </h3>
+        <h2 className={`font-serif py-5 font-semibold text-[30px]`}> Technology </h2>
+        <p className={`font-serif max-w-2xl text-base md:text-2xl mt-4 dark:text-neutral-200`}>
+          By basing the AURAMUSIC Player with the solana blockchain and storing all the tracks on IPFS, there is no central server and so the storage costs are drastically reduced.
+          This allows for more of the revenue to go directly to the artist, in a more secure, transparent way than ever before.
+        </p>
+      </div> */}
+      </WavyBackground>
 
       {/* Footer */}
-      <footer className="text-center p-4 md:p-6 bg-gray-900 text-white">
-        © 2023 True Feedback. All rights reserved.
+      <footer className="text-center p-4 md:p-6 z-30 bg-black text-white">
+        © 2024 AURAMUSIC. All rights reserved.
       </footer>
     </>
   );
